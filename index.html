@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="gog. — education, technology, entrepreneurship and ideas.">
+<title>gog. — Build. Teach. Explore.</title>
+<style>
+:root{
+  --navy:#14233d;
+  --blue:#2563eb;
+  --blue2:#4f46e5;
+  --text:#14233d;
+  --muted:#64748b;
+  --line:#dce5ef;
+  --soft:#f6f9fc;
+  --white:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--text);
+  background:#fff;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.6;
+}
+a{text-decoration:none;color:inherit}
+.container{width:min(1120px,calc(100% - 36px));margin:auto}
+
+/* Navigation */
+header{
+  position:fixed;
+  inset:0 0 auto;
+  z-index:30;
+  background:rgba(255,255,255,.82);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(20,35,61,.07);
+}
+.nav{height:74px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:32px;font-weight:900;letter-spacing:-.09em}
+.logo span{color:var(--blue)}
+.nav-links{display:flex;gap:30px;list-style:none;margin:0;padding:0;color:var(--muted);font-size:14px}
+.nav-links a:hover{color:var(--blue)}
+.nav-button{
+  padding:10px 17px;border-radius:11px;background:var(--navy);color:#fff;
+  font-size:13px;font-weight:800
+}
+
+/* Hero */
+.hero{
+  min-height:100vh;
+  padding:145px 0 100px;
+  display:flex;
+  align-items:center;
+  background:
+    radial-gradient(circle at 82% 20%,rgba(37,99,235,.12),transparent 27%),
+    radial-gradient(circle at 8% 78%,rgba(79,70,229,.07),transparent 25%),
+    linear-gradient(180deg,#fff 0%,#f7faff 100%);
+  overflow:hidden;
+}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:80px;align-items:center}
+.kicker{
+  color:var(--blue);font-size:12px;font-weight:900;
+  letter-spacing:.16em;text-transform:uppercase
+}
+h1{
+  font-size:clamp(54px,8vw,94px);
+  line-height:.92;
+  letter-spacing:-.075em;
+  margin:18px 0 25px;
+}
+h1 .gradient{
+  color:transparent;
+  background:linear-gradient(110deg,var(--navy),var(--blue),var(--blue2));
+  -webkit-background-clip:text;background-clip:text
+}
+.hero-copy{max-width:650px;color:var(--muted);font-size:18px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:13px 20px;border-radius:12px;font-size:14px;font-weight:850;
+  transition:.22s ease
+}
+.btn:hover{transform:translateY(-2px)}
+.primary{background:var(--navy);color:#fff;box-shadow:0 12px 28px rgba(20,35,61,.15)}
+.secondary{background:#fff;border:1px solid var(--line);color:var(--navy)}
+.hero-card{
+  position:relative;min-height:440px;border-radius:30px;
+  border:1px solid var(--line);background:#fff;
+  box-shadow:0 30px 80px rgba(20,35,61,.10);
+  overflow:hidden;padding:28px;
+}
+.hero-card::before{
+  content:"";position:absolute;width:310px;height:310px;border-radius:50%;
+  right:-120px;top:-110px;background:linear-gradient(135deg,#dceaff,#eef3ff)
+}
+.hero-card::after{
+  content:"";position:absolute;width:170px;height:170px;border-radius:50%;
+  left:-80px;bottom:-70px;background:#edf3ff
+}
+.hero-card-content{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:space-between}
+.mini-logo{font-size:42px;font-weight:900;letter-spacing:-.1em}
+.mini-logo span{color:var(--blue)}
+.statement{font-size:28px;line-height:1.12;letter-spacing:-.04em;max-width:320px;font-weight:800}
+.stack{display:flex;flex-wrap:wrap;gap:8px}
+.tag{
+  padding:7px 10px;border-radius:999px;background:#f1f5fa;
+  color:#52647b;font-size:12px;font-weight:750
+}
+
+/* Sections */
+.section{padding:115px 0}
+.soft{background:var(--soft)}
+.section-head{max-width:700px;margin-bottom:50px}
+.label{color:var(--blue);font-size:12px;font-weight:900;letter-spacing:.16em;text-transform:uppercase}
+h2{font-size:clamp(35px,5vw,58px);line-height:1.02;letter-spacing:-.06em;margin:12px 0 16px}
+.section-head p{color:var(--muted);margin:0;font-size:16px}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{
+  padding:28px;border:1px solid var(--line);border-radius:20px;
+  background:#fff;transition:.25s;min-height:220px
+}
+.card:hover{transform:translateY(-5px);box-shadow:0 20px 45px rgba(20,35,61,.09)}
+.icon{
+  width:43px;height:43px;display:grid;place-items:center;
+  border-radius:12px;background:#edf4ff;color:var(--blue);
+  font-weight:900;margin-bottom:22px
+}
+.card h3{font-size:20px;letter-spacing:-.03em;margin:0 0 8px}
+.card p{color:var(--muted);font-size:14px;margin:0}
+
+.venture{
+  display:grid;grid-template-columns:1fr 1fr;gap:65px;align-items:center
+}
+.venture-panel{
+  border-radius:26px;padding:38px;background:var(--navy);color:#fff;
+  min-height:360px;display:flex;flex-direction:column;justify-content:space-between;
+  box-shadow:0 25px 60px rgba(20,35,61,.16)
+}
+.venture-logo{font-size:46px;font-weight:900;letter-spacing:-.1em}
+.venture-logo span{color:#62a0ff}
+.venture-panel h3{font-size:32px;letter-spacing:-.05em;line-height:1.05;margin:20px 0 10px}
+.venture-panel p{color:#bdc9da;margin:0}
+.venture-list{display:grid;gap:15px}
+.venture-list div{padding:20px;border:1px solid var(--line);border-radius:16px;background:#fff}
+.venture-list strong{display:block;margin-bottom:4px}
+.venture-list span{font-size:13px;color:var(--muted)}
+
+.cta-section{padding:120px 0;background:var(--navy);color:#fff;text-align:center}
+.cta-section .label{color:#76aaff}
+.cta-section h2{max-width:720px;margin:12px auto 18px}
+.cta-section p{max-width:570px;margin:0 auto 30px;color:#bdc9da}
+.cta-section .primary{background:#fff;color:var(--navy)}
+
+footer{padding:26px 0;background:#f2f5f9;color:#718096;font-size:12px}
+.footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center}
+.footer-links{display:flex;gap:20px}
+.footer-links a:hover{color:var(--blue)}
+
+@media(max-width:800px){
+  .nav-links{display:none}
+  .hero{padding-top:120px}
+  .hero-grid,.venture{grid-template-columns:1fr;gap:38px}
+  .hero-card{min-height:340px}
+  .cards{grid-template-columns:1fr}
+  .section{padding:85px 0}
+  .footer-inner{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="logo" href="/">g<span>o</span>g.</a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">What I do</a></li>
+        <li><a href="#ventures">Ventures</a></li>
+        <li><a href="/portfolio">Portfolio</a></li>
+      </ul>
+    </nav>
+    <a class="nav-button" href="#contact">Let's connect</a>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="kicker">Welcome to gog.</div>
+      <h1>Build ideas.<br><span class="gradient">Teach minds.</span><br>Create impact.</h1>
+      <p class="hero-copy">
+        A personal space for education, technology, entrepreneurship and the
+        ideas being turned into something real.
+      </p>
+      <div class="hero-actions">
+        <a class="btn primary" href="/portfolio">Explore my journey →</a>
+        <a class="btn secondary" href="#ventures">See what I'm building</a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-card-content">
+        <div class="mini-logo">g<span>o</span>g.</div>
+        <div>
+          <div class="statement">Curiosity in. Ideas out. Keep building.</div>
+        </div>
+        <div class="stack">
+          <span class="tag">Education</span>
+          <span class="tag">Technology</span>
+          <span class="tag">Entrepreneurship</span>
+          <span class="tag">Product</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-head">
+      <div class="label">About</div>
+      <h2>A journey across classrooms, companies and startups.</h2>
+      <p>
+        From engineering education and professional experience to teaching and
+        entrepreneurship, the goal has remained the same: learn, build, share,
+        and keep moving forward.
+      </p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="icon">01</div>
+        <h3>Educator</h3>
+        <p>
+          Teaching engineering students, simplifying complex technical ideas,
+          and helping the next generation build stronger foundations.
+        </p>
+      </div>
+      <div class="card">
+        <div class="icon">02</div>
+        <h3>Builder</h3>
+        <p>
+          Exploring software, products, systems and practical ideas that can
+          move from a concept into something people can actually use.
+        </p>
+      </div>
+      <div class="card">
+        <div class="icon">03</div>
+        <h3>Entrepreneur</h3>
+        <p>
+          Turning ideas into ventures, learning through execution, and working
+          across growth, sales, branding and business development.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section soft" id="work">
+  <div class="container">
+    <div class="section-head">
+      <div class="label">What I do</div>
+      <h2>Different disciplines. One direction.</h2>
+      <p>Areas where curiosity turns into practical work.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="icon">E</div>
+        <h3>Education & Teaching</h3>
+        <p>Engineering education, mentoring, curriculum development, and technical learning.</p>
+      </div>
+      <div class="card">
+        <div class="icon">T</div>
+        <h3>Technology</h3>
+        <p>Software, cloud infrastructure, web applications, automation, and technical experimentation.</p>
+      </div>
+      <div class="card">
+        <div class="icon">B</div>
+        <h3>Business & Growth</h3>
+        <p>Sales strategy, product thinking, brand building, partnerships, and entrepreneurship.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="ventures">
+  <div class="container venture">
+    <div class="venture-panel">
+      <div class="venture-logo">g<span>o</span>g.</div>
+      <div>
+        <div class="label" style="color:#76aaff">Building next</div>
+        <h3>Ideas deserve a place to become real.</h3>
+        <p>
+          gog. is the home for experiments, products, ventures and projects
+          that grow from curiosity into execution.
+        </p>
+      </div>
+    </div>
+
+    <div class="venture-list">
+      <div>
+        <strong>goground.in</strong>
+        <span>A venture being built with a focus on creating something useful, scalable and memorable.</span>
+      </div>
+      <div>
+        <strong>Teaching & Knowledge</strong>
+        <span>Creating learning material, projects and technical resources for students and professionals.</span>
+      </div>
+      <div>
+        <strong>New experiments</strong>
+        <span>Always exploring the next product, business idea or technology worth building.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="label">The next chapter</div>
+    <h2>Have an idea, opportunity, or something worth building?</h2>
+    <p>Let's start a conversation.</p>
+    <a class="btn primary" href="mailto:hello@example.com">Get in touch →</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div>© 2026 gog. · Built with curiosity.</div>
+    <div class="footer-links">
+      <a href="/portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
